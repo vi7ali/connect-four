@@ -11,10 +11,11 @@ or diagonal) or there is no space left on the board.
 
 1.Class board
 It knows the state of itself
-It knows which players turn is it
 
+It generates itself
 It updates the state of itself
 It checks for win/draw condition
+It tells the game to display win/draw message
 It checks for valid moves
 
 2.Class player
@@ -28,6 +29,7 @@ It tells the game to save/load
 It knows the welcome message
 It knows the winning message
 It knows the draw message
+It knows which players turn is it
 
 It creates board
 It creates 2 players
