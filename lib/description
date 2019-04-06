@@ -14,7 +14,6 @@ It knows the state of itself
 
 It generates itself
 It updates the state of itself
-It checks for win/draw condition
 It tells the game to display win/draw message
 It checks for valid moves
 
@@ -33,5 +32,6 @@ It knows which players turn is it
 
 It creates board
 It creates 2 players
+It checks for win/draw condition
 It saves/loads game
 It displays the welcome/winning/draw message

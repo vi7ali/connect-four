@@ -21,7 +21,7 @@ RSpec.describe "Connect Four" do
     end
 
     it "updates the grid" do
-      grid[2][6] = "r"
+      grid[0][6] = "r"
       expect(board.update_grid(6,"r")).to eql(grid)
     end
 
@@ -29,5 +29,25 @@ RSpec.describe "Connect Four" do
       6.times {|index| board.grid[index][0] = "r"}
       expect(board.is_valid_move?(0)).to eql(false)
     end
+
+    it "returns the row number" do
+      4.times {|index| board.grid[index][0] = "r"}
+      expect(board.get_row(0)).to eql(4)
+    end
+
+    it "returns the color in case of horizontal win" do
+      4.times {|index| board.grid[3][index] = "r"}
+      expect(board.check_horizontal_win()).to eql("r")
+    end
+
+    it "returns empty string in case there is no horizontal win" do
+      3.times {|index| board.grid[3][index] = "r"}
+      expect(board.check_horizontal_win()).to eql("")
+    end
+
+  end
+
+  describe Player do
+    
   end
 end
