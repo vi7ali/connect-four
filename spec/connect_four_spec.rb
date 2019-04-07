@@ -45,6 +45,21 @@ RSpec.describe "Connect Four" do
       expect(board.check_horizontal_win()).to eql("")
     end
 
+    it "returns the color in case of vertical win" do
+      4.times {|index| board.grid[index][0] = "r"}
+      expect(board.check_vertical_win()).to eql("r")
+    end
+
+    it "returns empty string in case there is no vertical win" do
+      3.times {|index| board.grid[index][0] = "r"}
+      expect(board.check_vertical_win()).to eql("")
+    end
+
+    it "returns the color in case of diagonal \\ win" do
+      4.times {|index| board.grid[index][index] = "r"}
+      expect(board.check_diagonal_win()).to eql("r")
+    end
+
   end
 
   describe Player do
