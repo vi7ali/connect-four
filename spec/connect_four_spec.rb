@@ -60,6 +60,26 @@ RSpec.describe "Connect Four" do
       expect(board.check_diagonal_win()).to eql("r")
     end
 
+    it "returns empty string in case there is no diagonal \\ win" do
+      3.times {|index| board.grid[index][index] = "r"}
+      expect(board.check_diagonal_win()).to eql("")
+    end
+
+    it "returns the color in case of diagonal / win" do
+      board.grid[0][3] = "r"
+      board.grid[1][2] = "r"
+      board.grid[2][1] = "r"
+      board.grid[3][0] = "r"
+      expect(board.check_reverse_diagonal_win()).to eql("r")
+    end
+
+    it "returns empty string in case there is no diagonal / win" do      
+      board.grid[1][2] = "r"
+      board.grid[2][1] = "r"
+      board.grid[3][0] = "r"
+      expect(board.check_reverse_diagonal_win()).to eql("")
+    end
+
   end
 
   describe Player do
