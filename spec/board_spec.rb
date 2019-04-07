@@ -1,4 +1,4 @@
-require './lib/connect_four'
+require './lib/board'
 
 RSpec.describe "Connect Four" do
   describe Board do
@@ -80,9 +80,5 @@ RSpec.describe "Connect Four" do
       expect(board.check_reverse_diagonal_win()).to eql("")
     end
 
-  end
-
-  describe Player do
-    
   end
 end
