@@ -1,15 +1,16 @@
 require './lib/board'
 
-RSpec.describe "Connect Four" do
+#for the tests to pass the private methods must be public
+RSpec.describe "Board" do
   describe Board do
     let(:board) { Board.new }
     let(:grid) {[ 
-                  [" ", " ", " ", " ", " ", " ", " "],
-                  [" ", " ", " ", " ", " ", " ", " "],
-                  [" ", " ", " ", " ", " ", " ", " "],
-                  [" ", " ", " ", " ", " ", " ", " "],
-                  [" ", " ", " ", " ", " ", " ", " "],
-                  [" ", " ", " ", " ", " ", " ", " "]
+                  ["*", "*", "*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*", "*", "*"]
                 ]}
     
     it "generates the grid" do
@@ -21,62 +22,62 @@ RSpec.describe "Connect Four" do
     end
 
     it "updates the grid" do
-      grid[0][6] = "r"
-      expect(board.update_grid(6,"r")).to eql(grid)
+      grid[5][6] = "☺"
+      expect(board.update_grid(6,"☺")).to eql(grid)
     end
 
     it "checks for valid move" do
-      6.times {|index| board.grid[index][0] = "r"}
+      6.times {|index| board.grid[index][0] = "☺"}
       expect(board.is_valid_move?(0)).to eql(false)
     end
 
     it "returns the row number" do
-      4.times {|index| board.grid[index][0] = "r"}
-      expect(board.get_row(0)).to eql(4)
+      (-5..-2).each {|index| board.grid[-index][0] = "☺"}
+      expect(board.get_row(0)).to eql(1)
     end
 
     it "returns the color in case of horizontal win" do
-      4.times {|index| board.grid[3][index] = "r"}
-      expect(board.check_horizontal_win()).to eql("r")
+      4.times {|index| board.grid[3][index] = "☺"}
+      expect(board.check_horizontal_win()).to eql("☺")
     end
 
     it "returns empty string in case there is no horizontal win" do
-      3.times {|index| board.grid[3][index] = "r"}
+      3.times {|index| board.grid[3][index] = "☺"}
       expect(board.check_horizontal_win()).to eql("")
     end
 
     it "returns the color in case of vertical win" do
-      4.times {|index| board.grid[index][0] = "r"}
-      expect(board.check_vertical_win()).to eql("r")
+      4.times {|index| board.grid[index][0] = "☺"}
+      expect(board.check_vertical_win()).to eql("☺")
     end
 
     it "returns empty string in case there is no vertical win" do
-      3.times {|index| board.grid[index][0] = "r"}
+      3.times {|index| board.grid[index][0] = "☺"}
       expect(board.check_vertical_win()).to eql("")
     end
 
     it "returns the color in case of diagonal \\ win" do
-      4.times {|index| board.grid[index][index] = "r"}
-      expect(board.check_diagonal_win()).to eql("r")
+      4.times {|index| board.grid[index][index] = "☺"}
+      expect(board.check_diagonal_win()).to eql("☺")
     end
 
     it "returns empty string in case there is no diagonal \\ win" do
-      3.times {|index| board.grid[index][index] = "r"}
+      3.times {|index| board.grid[index][index] = "☺"}
       expect(board.check_diagonal_win()).to eql("")
     end
 
     it "returns the color in case of diagonal / win" do
-      board.grid[0][3] = "r"
-      board.grid[1][2] = "r"
-      board.grid[2][1] = "r"
-      board.grid[3][0] = "r"
-      expect(board.check_reverse_diagonal_win()).to eql("r")
+      board.grid[0][3] = "☺"
+      board.grid[1][2] = "☺"
+      board.grid[2][1] = "☺"
+      board.grid[3][0] = "☺"
+      expect(board.check_reverse_diagonal_win()).to eql("☺")
     end
 
     it "returns empty string in case there is no diagonal / win" do      
-      board.grid[1][2] = "r"
-      board.grid[2][1] = "r"
-      board.grid[3][0] = "r"
+      board.grid[1][2] = "☺"
+      board.grid[2][1] = "☺"
+      board.grid[3][0] = "☺"
       expect(board.check_reverse_diagonal_win()).to eql("")
     end
 

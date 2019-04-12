@@ -22,7 +22,6 @@ It knows the player's name
 It knows the player's color
 
 It tells the board the column number
-It tells the game to save/load
 
 3.Class game
 It knows the welcome message
@@ -33,5 +32,4 @@ It knows which players turn is it
 It creates board
 It creates 2 players
 It checks for win/draw condition
-It saves/loads game
 It displays the welcome/winning/draw message
