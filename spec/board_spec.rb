@@ -1,6 +1,7 @@
 require './lib/board'
 
 #for the tests to pass the private methods must be public
+#another git branch created to fix it
 RSpec.describe "Board" do
   describe Board do
     let(:board) { Board.new }
