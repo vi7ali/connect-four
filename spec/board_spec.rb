@@ -1,6 +1,5 @@
 require './lib/board'
 
-#for the tests to pass the private methods must be public
 RSpec.describe "Board" do
   describe Board do
     let(:board) { Board.new }
@@ -33,37 +32,37 @@ RSpec.describe "Board" do
 
     it "returns the row number" do
       (-5..-2).each {|index| board.grid[-index][0] = "☺"}
-      expect(board.get_row(0)).to eql(1)
+      expect(board.send :get_row, 0).to eql(1)
     end
 
     it "returns the color in case of horizontal win" do
       4.times {|index| board.grid[3][index] = "☺"}
-      expect(board.check_horizontal_win()).to eql("☺")
+      expect(board.send :check_horizontal_win).to eql("☺")
     end
 
     it "returns empty string in case there is no horizontal win" do
       3.times {|index| board.grid[3][index] = "☺"}
-      expect(board.check_horizontal_win()).to eql("")
+      expect(board.send :check_horizontal_win).to eql("")
     end
 
     it "returns the color in case of vertical win" do
       4.times {|index| board.grid[index][0] = "☺"}
-      expect(board.check_vertical_win()).to eql("☺")
+      expect(board.send :check_vertical_win).to eql("☺")
     end
 
     it "returns empty string in case there is no vertical win" do
       3.times {|index| board.grid[index][0] = "☺"}
-      expect(board.check_vertical_win()).to eql("")
+      expect(board.send :check_vertical_win).to eql("")
     end
 
     it "returns the color in case of diagonal \\ win" do
       4.times {|index| board.grid[index][index] = "☺"}
-      expect(board.check_diagonal_win()).to eql("☺")
+      expect(board.send :check_diagonal_win).to eql("☺")
     end
 
     it "returns empty string in case there is no diagonal \\ win" do
       3.times {|index| board.grid[index][index] = "☺"}
-      expect(board.check_diagonal_win()).to eql("")
+      expect(board.send :check_diagonal_win).to eql("")
     end
 
     it "returns the color in case of diagonal / win" do
@@ -71,14 +70,14 @@ RSpec.describe "Board" do
       board.grid[1][2] = "☺"
       board.grid[2][1] = "☺"
       board.grid[3][0] = "☺"
-      expect(board.check_reverse_diagonal_win()).to eql("☺")
+      expect(board.send :check_reverse_diagonal_win).to eql("☺")
     end
 
     it "returns empty string in case there is no diagonal / win" do      
       board.grid[1][2] = "☺"
       board.grid[2][1] = "☺"
       board.grid[3][0] = "☺"
-      expect(board.check_reverse_diagonal_win()).to eql("")
+      expect(board.send :check_reverse_diagonal_win).to eql("")
     end
 
   end
